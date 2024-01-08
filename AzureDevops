@@ -1,0 +1,23 @@
+IAC: Infrastructure as a code (ARMTemplates)
+--------------------------------------------
+Advantages:
+1. Automated way of deploying resources
+2. preductable
+3. Repeatable
+
+
+JSON:
+----
+Vscode: install the extension " Azure Resource Manager Tools "
+
+Elements or structure of the ARMtemplates
+
+link: https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/syntax
+
+Schema
+Contentversion
+parameters
+variables
+resources
+outputs
+

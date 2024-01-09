@@ -1,25 +1,154 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
+    "parameters": {
+        "storage_account_name": {
+            "type": "string"
+        },
+        "storage_account_kind": {
+            "type": "string",
+            "allowedValues": [
+                "BlobStorage",
+                "BlockBlobStorage",
+                "FileStorage",
+                "Storage",
+                "StorageV2" 
+            ],
+            "defaultValue": "StorageV2"
+
+        },
+        "storage_account_sku": {
+            "type": "string",
+            "metadata": {
+                "description": "SKU of the storage account"
+            },
+            "allowedValues": [
+                "Premium_LRS",
+                "Premium_ZRS",
+                "Standard_GRS",
+                "Standard_GZRS",
+                "Standard_LRS",
+                "Standard_RAGRS",
+                "Standard_RAGZRS",
+                "Standard_ZRS"
+            ],
+            "defaultValue": "Standard_LRS"
+        },
+        "virtual_network_name": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the virtual network"
+            }
+        }
+    },
     "functions": [],
-    "variables": {},
-    "resources": [
-        {
-            "name": "saanvikit20240108",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2023-01-01",
-            "tags": {
+    "variables": {
+        "tags": {
                 "Owner": "azureramakrishna@gmail.com",
                 "Project": "SAANVIK IT",
                 "Department": "IT",
                 "Environment": "DEV"
             },
+        "virtualnetwork": {
+            "vnet_address": ["172.16.0.0/24", "192.168.0.0/27"],
+            "snet_name1": "snet-01",
+            "snet_address1": "172.16.0.0/25",
+            "snet_name2": "snet-02",
+            "snet_address2": "172.16.0.128/25"
+        },
+        "public_ip_name": "saanvikit-pip-01",
+        "nsg_name": "saanvikit-nsg"
+    },
+    "resources": [
+        {
+            "name": "[parameters('storage_account_name')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2023-01-01",
+            "tags": "[variables('tags')]",
             "location": "[resourceGroup().location]",
-            "kind": "StorageV2",
+            "kind": "[parameters('storage_account_kind')]",
             "sku": {
-                "name": "Standard_LRS",
+                "name": "[parameters('storage_account_sku')]",
                 "tier": "Standard"
+            }
+        },
+        {
+            "name": "[parameters('virtual_network_name')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2023-04-01",
+            "location": "[resourceGroup().location]",
+            "tags": "[variables('tags')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": "[variables('virtualnetwork').vnet_address]"
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('virtualnetwork').snet_name1]",
+                        "properties": {
+                            "addressPrefix": "[variables('virtualnetwork').snet_address1]"
+                        }
+                    },
+                    {
+                        "name": "[variables('virtualnetwork').snet_name2]",
+                        "properties": {
+                            "addressPrefix": "[variables('virtualnetwork').snet_address2]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "[variables('public_ip_name')]",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2023-04-01",
+            "tags": "[variables('tags')]",
+            "location": "[resourceGroup().location]",
+            "tags": "[variables('tags')]",
+            "properties": {
+                "publicIPAllocationMethod": "Static",
+                "dnsSettings": {
+                    "domainNameLabel": "saanvikitdns"
+                }
+            }
+        },
+        {
+            "name": "[variables('nsg_name')]",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2023-04-01",
+            "location": "[resourceGroup().location]",
+            "tags": "[variables('tags')]",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "RDP",
+                        "properties": {
+                            "description": "Allow_RDP",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 100,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "SSH",
+                        "properties": {
+                            "description": "Allow_SSH",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 200,
+                            "direction": "Inbound"
+                        }
+                    }
+                ]
             }
         }
     ],

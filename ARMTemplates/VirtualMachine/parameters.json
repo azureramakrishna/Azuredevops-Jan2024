@@ -1,0 +1,26 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storage_account_name":{
+            "value": "Saanvikitsa2024"
+        },
+        "virtual_network_name": {
+            "value": "saanvikit-vnet-01"
+        },
+        "virtual_machine_name": {
+            "value": "saanvikit-vm"
+        },
+        "adminUser": {
+            "value": "azureuser"
+        },
+        "adminPassword": {
+            "reference": {
+                "keyVault": {
+                  "id": "/subscriptions/6e4924ab-b00c-468f-ae01-e5d33e8786f8/resourceGroups/cloud-shell-storage-centralindia/providers/Microsoft.KeyVault/vaults/saanvikit-kv"
+                },
+                "secretName": "VirtualMachinePassword"
+              }
+        }
+    }
+}

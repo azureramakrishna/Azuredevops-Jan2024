@@ -5,6 +5,7 @@ Advantages:
 2. preductable
 3. Repeatable
 
+ARMTemplates & Bicep - Azure native solutions
 
 JSON:
 ----
@@ -20,4 +21,56 @@ parameters
 variables
 resources
 outputs
+
+
+Helper functions:
+----------------
+toLower
+toUpper
+concat
+copyindex()
+resourcegroup().location
+dependson[]
+resourceid
+
+Terraform:
+---------
+    IAC tool and its opensource
+
+
+ARMTemplates                                            Terraform
+------------                                            ---------
+1. IAC Tool                                             1. IAC Tool
+2. Azure specific                                       2. Opensource (Azure, AWS, GCP, OCI, Alibabacloud etc.)
+3. JSON format                                          3. HCL (Hashicorp configuration language) format
+4. Extension - .json                                    4. Extension - .tf
+5. template.json                                        5. main.tf
+    parameters.json                                         variables.tf
+6. schema                                               6. Terraform building blocks
+    contentverion                                           provider
+    parameters                                              resources
+    variables                                               outputs
+    resources
+    outputs
+7. Powershell/CLI commands                              7. Terraform lifecycle
+    New-AzResourceGroupDeployment `                         terraform init
+      -ResourceGroupName                                    terraform fmt
+      -TemplateFile                                         terraform validate
+      -TemplateParametersFile                               terraform plan
+      -Verbose                                              terraform apply
+                                                            terraform destroy
+
+
+Gettting started with terraform:
+-------------------------------
+Downalod terraform - https://developer.hashicorp.com/terraform/install
+Move the terraform.exe file to c:/windows folder
+to validate the installation - open any terminal (powershell/cmd) - type terraform 
+
+Extensions to install in vscode - Hashicorp terraform & Azure terraform 
+
+Providers:
+    AWS - aws
+    Azure - azurerm
+    GCP - google
 

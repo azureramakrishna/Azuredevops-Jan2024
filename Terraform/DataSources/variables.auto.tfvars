@@ -1,0 +1,7 @@
+storage_account_name = "datasources20240116"
+public_ip_name       = "datasources-pip"
+nsg_name             = "datasources-nsg"
+nic_name             = "datasources-nic"
+virtual_machine_name = "datasources-vm"
+virtual_machine_size = "Standard_D2s_v3"
+adminUser            = "saanvikit"

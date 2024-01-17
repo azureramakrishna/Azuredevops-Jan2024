@@ -74,3 +74,11 @@ Providers:
     Azure - azurerm
     GCP - google
 
+
+Terraform scenarios:
+-------------------
+state file lock --> -lock=false
+VM --> data disk manually --> terraform plan --> no changes
+VM --> delete the state file --> terraform apply --> Errors
+VM --> delete the VM maually --> terraform apply --> re-create the VM
+main.tf --> storate, vm, nsg --> delete only storage --> -target 

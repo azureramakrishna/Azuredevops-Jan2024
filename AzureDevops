@@ -82,3 +82,20 @@ VM --> data disk manually --> terraform plan --> no changes
 VM --> delete the state file --> terraform apply --> Errors
 VM --> delete the VM maually --> terraform apply --> re-create the VM
 main.tf --> storate, vm, nsg --> delete only storage --> -target 
+
+to deploy multiple resources:
+----------------------------
+ARMTemplates - Copyindex()
+Terraform - count.index
+For_each
+
+Terraform provisioners:
+----------------------
+
+Terraform provisioners have nothing in common with providers, they allow the execution of various commands or scripts on either local or remote machines, and they can also transfer files from a local environment to a remote one
+
+There are three types of provisioners in Terraform: 
+
+Local-exec provisioners
+Remote-exec provisioners
+File provisioners

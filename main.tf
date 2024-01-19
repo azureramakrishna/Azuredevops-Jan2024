@@ -1,26 +1,3 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "3.70.0"
-    }
-  }
-}
-
-provider "azurerm" {
-  features {}
-}
-
-# terraform backend
-terraform {
-  backend "azurerm" {
-    resource_group_name  = "storage-account-resource-group"
-    storage_account_name = "saanvikit20240118"
-    container_name       = "tfstate"
-    key                  = "for.each.terraform.tfstate"
-  }
-}
-
 # Create a resource group
 resource "azurerm_resource_group" "example" {
   name     = var.resource_group_name

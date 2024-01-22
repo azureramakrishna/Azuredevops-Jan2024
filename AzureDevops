@@ -99,3 +99,15 @@ There are three types of provisioners in Terraform:
 Local-exec provisioners
 Remote-exec provisioners
 File provisioners
+
+
+AzureDevops:
+-----------
+Azure portal: portal.azure.com
+AzureDevops:  dev.azure.com
+
+Signup for AzureDevops:
+https://learn.microsoft.com/en-us/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops&tabs=microsoft-account
+
+AzureDevops Documentation:
+https://learn.microsoft.com/en-us/azure/devops/?view=azure-devops

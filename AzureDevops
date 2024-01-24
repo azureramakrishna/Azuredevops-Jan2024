@@ -111,3 +111,59 @@ https://learn.microsoft.com/en-us/azure/devops/user-guide/sign-up-invite-teammat
 
 AzureDevops Documentation:
 https://learn.microsoft.com/en-us/azure/devops/?view=azure-devops
+
+
+How do you get work at projects:
+-------------------------------
+Agile Process
+
+Sprint1  - 2 weeks (22nd Jan to 2nd Feb)
+Sprint2  - 2 weeks (5th feb to 16th feb)
+
+Sprint planning 
+    Backlogs (what is the work that you want to deliver)
+    Capacity planning
+
+Daily standup calls (10 to 15min)
+    Update the progress of the backlogs
+
+Retrospective:
+    what went well
+    what didn't went well
+    what can be improved
+
+Agile process work flow:
+-----------------------
+Epic
+Features
+Userstory
+Task
+Bug
+
+
+Epic            Ecomerce website like Amazon.in 
+Features        Signup page 
+                Login page 
+                Home page 
+                Category pages 
+                Product catalog
+                Payment gateway
+                Tracking system 
+                Support page
+
+Userstory       Singup with google account 
+                Singup with facebook account
+                Signup with apple account 
+                Singup with email and password
+
+                Login with google account 
+                Login with facebook account 
+
+Task            Singup with google account 
+                Singup with facebook account
+                Signup with apple account 
+                Singup with email and password
+
+Bug             Create the bugs in case of any issues
+
+

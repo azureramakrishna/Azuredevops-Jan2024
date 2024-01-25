@@ -135,10 +135,14 @@ Retrospective:
 Agile process work flow:
 -----------------------
 Epic
-Features
-Userstory
-Task
-Bug
+    \_
+        Features
+            \_
+                Userstory
+                    \_
+                        Task
+                            \_
+                                Bug
 
 
 Epic            Ecomerce website like Amazon.in 
@@ -166,4 +170,27 @@ Task            Singup with google account
 
 Bug             Create the bugs in case of any issues
 
+
+Azure Repos:
+-----------
+Git download: https://git-scm.com/downloads
+to validate the git installation -> open any terminal (cmd) --> type git
+
+Git basic commands:
+------------------
+https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
+
+To initiate a repo:
+------------------
+git config --global user.name "saanvikitjan2024"
+git config --global user.email "saanvikitjan2024@gmail.com"
+
+git clone <cloning url>
+
+add the files into local repo 
+
+git status
+git add .
+git commit -m "ARMTemplates"
+git push origin main
 

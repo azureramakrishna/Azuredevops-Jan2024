@@ -194,3 +194,37 @@ git add .
 git commit -m "ARMTemplates"
 git push origin main
 
+Azure Pipelines:
+---------------
+Two types of pipelines:
+
+- Classsic editor pipeline (GUI)
+- YAML pipeline (Pipeline as a code)
+
+Pre-requisites:
+--------------
+1. Service connection (using service principle)
+    AzureDevops (SAAS) --->   Azure subscription 
+                              AWS Cloud 
+                              Onprem server 
+
+    Clinet_id: 0e76c032-2c23-4896-9193-dad790454e66
+    Secret: stT8Q~lkZ********************************
+    Tenant_id: 459865f1-a8aa-450a-baec-8b47a9e5c904
+    Subscription_id: 2e28c82c-17d7-4303-b27a-4141b3d4088f
+
+2. Agent pool (VM)
+
+    - Microsoft hosted agent
+        Raise a request: https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR63mUWPlq7NEsFZhkyH8jChUMlM3QzdDMFZOMkVBWU5BWFM3SDI2QlRBSC4u
+
+        disadvantage: if you wanted to get the logs we need to raise a request to microsoft 
+        Queue state: if the demand is more the jobs will be in queue state only 
+
+    - Self hosted agent
+        Azure VM -> VSTS (visual studio team services agent)
+
+        PAT: v3hiviws7ney**********************
+
+How to set up the pipeline for ARMTemplates and Terraform:
+---------------------------------------------------------
